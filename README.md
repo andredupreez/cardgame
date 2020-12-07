@@ -2,10 +2,10 @@
 
 ## Build && Run
 
-make
-./bin/poker
+- make
+- ./bin/poker
 
 ## Docker
 
-make docker
-docker run -it --rm poker
+- make docker
+- docker run -it --rm poker
