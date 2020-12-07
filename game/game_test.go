@@ -28,7 +28,7 @@ func TestGameDraw(t *testing.T) {
 	g := NewGame(4, []HandRank{TestHand1, TestHand2}, MatchTable{
 		TestHand1: Match{HandDescription: "Test Hand 1", Fun: testhand1},
 		TestHand2: Match{HandDescription: "Test Hand 2", Fun: testhand2},
-	})
+	}, DefaultSort)
 	hand := g.Draw()
 	assert.Equal(t, len(hand.GetCards()), 4, "Incorrect number of cards")
 }
@@ -38,7 +38,7 @@ func TestGameMatch(t *testing.T) {
 			TestHand1: Match{HandDescription: "Test Hand 1", Fun: testhand1},
 			TestHand2: Match{HandDescription: "Test Hand 2", Fun: testhand2},
 			TestHand3: Match{HandDescription: "Test Hand 3", Fun: testhand3},
-		})
+		}, DefaultSort)
 	hand := createHand([]string{"AH", "KD", "KS", "TD"})
 	rank, desc := g.Match(hand)
 	assert.Equal(t, rank, TestHand1, "Incorrect number of cards")
@@ -51,7 +51,7 @@ func TestGameNoMatch(t *testing.T) {
 			TestHand1: Match{HandDescription: "Test Hand 1", Fun: testhand1},
 			TestHand2: Match{HandDescription: "Test Hand 2", Fun: testhand2},
 			TestHand3: Match{HandDescription: "Test Hand 3", Fun: testhand3},
-		})
+		}, DefaultSort)
 	hand := createHand([]string{"AH", "KD", "KS", "TD"})
 	rank, desc := g.Match(hand)
 	assert.Equal(t, rank, TestHand2, "Incorrect number of cards")

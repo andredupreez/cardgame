@@ -1,14 +1,10 @@
 package game
 
-import (
-	"math/rand"
-	"time"
-)
-
 type Deck struct {
 	cards []Card
 }
 
+// Create a new deck
 func CreateDeck() *Deck {
 	deck := &Deck{}
 	deck.cards = make([]Card, 52)
@@ -24,11 +20,13 @@ func CreateDeck() *Deck {
 	return deck
 }
 
-func (d *Deck) GetCards() []Card {
+// Get the list of cards in the deck
+func (d Deck) GetCards() []Card {
 	return d.cards
 }
 
-func (d *Deck) String() string {
+// Format the string representation of the deck and cards
+func (d Deck) String() string {
 	var result string = ""
 	for index, c := range d.cards {
 		result += c.ToSymbolString()
@@ -39,15 +37,16 @@ func (d *Deck) String() string {
 	return result
 }
 
-func (d *Deck) Shuffle(rounds int) {
+// Shuffle the deck for the specified number of
+// rounds using the shuffle function specified
+func (d *Deck) Shuffle(rounds int, fun func([]Card) []Card) {
 	for round := 0; round < rounds; round += 1 {
-		rand.Seed(time.Now().UnixNano())
-		rand.Shuffle(len(d.cards), func(i, j int) {
-			d.cards[i], d.cards[j] = d.cards[j], d.cards[i]
-		})
+		d.cards = fun(d.cards)
 	}
 }
 
+// Draw the specified number of cards from the deck returned as a Hand,
+// the deck is modified as the cards drawn is removed from the deck
 func (d *Deck) Draw(count int) Hand {
 	cards := make([]Card, count)
 	copy(cards, d.cards[:count])
@@ -55,6 +54,7 @@ func (d *Deck) Draw(count int) Hand {
 	return NewHand(cards)
 }
 
-func (d *Deck) Count() int {
+// Return the number of cards remaining in the deck
+func (d Deck) Count() int {
 	return len(d.cards)
 }

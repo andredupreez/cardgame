@@ -6,3 +6,6 @@ test:
 	
 build:
 	go build -o bin/poker
+	
+clean:
+	rm bin/*

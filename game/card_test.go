@@ -12,16 +12,16 @@ func TestCardDefault(t *testing.T) {
 	assert.Equal(t, c.suit, Suit(0), "Invalid Suit")
 }
 func TestCardSuit(t *testing.T) {
-	assert.Equal(t, Card{suit: Hearts}.GetSuite().String(), "H", "Invalid Suit")
-	assert.Equal(t, Card{suit: Diamonds}.GetSuite().String(), "D", "Invalid Suit")
-	assert.Equal(t, Card{suit: Spades}.GetSuite().String(), "S", "Invalid Suit")
-	assert.Equal(t, Card{suit: Clubs}.GetSuite().String(), "C", "Invalid Suit")
+	assert.Equal(t, Card{suit: Hearts}.GetSuit().String(), "H", "Invalid Suit")
+	assert.Equal(t, Card{suit: Diamonds}.GetSuit().String(), "D", "Invalid Suit")
+	assert.Equal(t, Card{suit: Spades}.GetSuit().String(), "S", "Invalid Suit")
+	assert.Equal(t, Card{suit: Clubs}.GetSuit().String(), "C", "Invalid Suit")
 }
 func TestCardSuitSymbol(t *testing.T) {
-	assert.Equal(t, Card{suit: Hearts}.GetSuite().Symbol(), "♥", "Invalid Suit Symbol")
-	assert.Equal(t, Card{suit: Diamonds}.GetSuite().Symbol(), "♦", "Invalid Suit Symbol")
-	assert.Equal(t, Card{suit: Spades}.GetSuite().Symbol(), "♠", "Invalid Suit Symbol")
-	assert.Equal(t, Card{suit: Clubs}.GetSuite().Symbol(), "♣", "Invalid Suit Symbol")
+	assert.Equal(t, Card{suit: Hearts}.GetSuit().Symbol(), "♥", "Invalid Suit Symbol")
+	assert.Equal(t, Card{suit: Diamonds}.GetSuit().Symbol(), "♦", "Invalid Suit Symbol")
+	assert.Equal(t, Card{suit: Spades}.GetSuit().Symbol(), "♠", "Invalid Suit Symbol")
+	assert.Equal(t, Card{suit: Clubs}.GetSuit().Symbol(), "♣", "Invalid Suit Symbol")
 }
 func TestCardFace(t *testing.T) {
 	assert.Equal(t, Card{face: Two}.GetFace().String(), "2", "Invalid Face")

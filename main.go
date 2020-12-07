@@ -1,17 +1,17 @@
 package main
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/andredupreez/cardgame/poker"
 )
 
 func main() {
 	g := poker.CreatePoker()
-	log.Printf("Shuffling...")
+	fmt.Printf("Shuffling...\n")
 	g.Shuffle()
 	hand := g.Draw()
-	log.Printf("Your hand: %v", hand)
+	fmt.Printf("Your hand: %v\n", hand)
 	_, description := g.Match(hand)
-	log.Printf("You have: %v", description)
+	fmt.Printf("You have:  %v\n", description)
 }

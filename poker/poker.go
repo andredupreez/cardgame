@@ -18,6 +18,7 @@ const (
 	StraightFlush game.HandRank = 9
 )
 
+// Create a game with poker rules
 func CreatePoker() *game.Game {
 	return game.NewGame(
 		5,
@@ -33,8 +34,11 @@ func CreatePoker() *game.Game {
 			OnePair:       game.Match{HandDescription: "One Pair", Fun: isOnePair},
 			HighCard:      game.Match{HandDescription: "High Card", Fun: isHighCard},
 		},
+		game.DefaultSort,
 	)
 }
+
+// Matcher functions
 
 func isOnePair(groups game.CardGroupMap, hand game.Hand) bool {
 	if len(groups) == 4 {
@@ -120,9 +124,9 @@ func isStraight(groups game.CardGroupMap, hand game.Hand) bool {
 
 func isFlush(groups game.CardGroupMap, hand game.Hand) bool {
 	cards := hand.GetCards()
-	suit := cards[0].GetSuite()
+	suit := cards[0].GetSuit()
 	for _, card := range cards {
-		if card.GetSuite() != suit {
+		if card.GetSuit() != suit {
 			return false
 		}
 	}
